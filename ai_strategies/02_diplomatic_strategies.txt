@@ -4,10 +4,10 @@
 	type = diplomatic
 	
 	wanted_army_ratio = 200000 # 1 barrack per 200k incorporated population
-	wanted_navy_ratio = 200000 # 1 naval base per 400k coastal incorporated population
+	wanted_navy_ratio = 400000 # 1 naval base per 400k coastal incorporated population
 	
-	undesirable_infamy_level = 50
-	unacceptable_infamy_level = 100
+	undesirable_infamy_level = 25
+	unacceptable_infamy_level = 50
 	
 	ideological_opinion_effect_mult = 1.5
 	
@@ -16,27 +16,27 @@
 	}	
 	
 	diplomatic_play_neutrality = 0 # Added to base neutrality in diplomatic plays
-	diplomatic_play_boldness = 10 # Added to base boldness in diplomatic plays	
+	diplomatic_play_boldness = -25 # Added to base boldness in diplomatic plays	
 	
 	# Added to value from default strategy
 	bravery = {
-		value = 0
+		value = -0.25
 	}
 	
 	# Added to value from default strategy
 	aggression = {
-		value = 10
+		value = 0.25	
 
 		if = {
 			limit = { 
 				NOT = { is_country_type = unrecognized }
 				scope:target_country = { is_country_type = unrecognized } 
 			}
-			multiply = 2
+			add = 0.5
 			
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
-				multiply = 2
+				add = 1.5
 			}			
 		}
 
@@ -48,7 +48,7 @@
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
+			multiply = 0.1
 		}			
 	}
 	 
@@ -57,17 +57,16 @@
 	}
 	
 	secret_goal_weights = {
-		protect = 2.5
-		conquer = 0
+		protect = 1.5
 		dominate = 1.5
-		reconcile = 1
+		reconcile = 1.5
 	}
 	
 	wargoal_weights = {
-		regime_change = 5.0
-		humiliation = 5.0
-		liberate_subject = 3.0
-		liberate_country = 3.0
+		regime_change = 3.0
+		humiliation = 2.0
+		liberate_subject = 1.5
+		liberate_country = 1.5
 	}
 
 	possible = {
@@ -89,10 +88,10 @@ ai_strategy_territorial_expansion = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = 100000 # 1 barrack per 150k incorporated population
-	wanted_navy_ratio = 200000 # 1 naval base per 400k coastal incorporated population	
+	wanted_army_ratio = 150000 # 1 barrack per 150k incorporated population
+	wanted_navy_ratio = 400000 # 1 naval base per 400k coastal incorporated population	
 	
-	undesirable_infamy_level = 90
+	undesirable_infamy_level = 50
 	unacceptable_infamy_level = 100
 	
 	ideological_opinion_effect_mult = 0.75
@@ -101,24 +100,24 @@ ai_strategy_territorial_expansion = {
 		value = 0.15
 	}		
 	
-	diplomatic_play_neutrality = -10 # Added to base neutrality in diplomatic plays
+	diplomatic_play_neutrality = 25 # Added to base neutrality in diplomatic plays
 	diplomatic_play_boldness = 25 # Added to base boldness in diplomatic plays		
 	
 	# Added to value from default strategy
 	bravery = {
-		value = 1
+		value = 0.25
 	}
 	
 	# Added to value from default strategy
 	aggression = {
-		value = 15
+		value = 1
 		
 		if = {
 			limit = { 
 				NOT = { is_country_type = unrecognized }
 				scope:target_country = { is_country_type = unrecognized } 
 			}
-			multiply = 3
+			add = 2
 		}	
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -129,7 +128,7 @@ ai_strategy_territorial_expansion = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.75
+			multiply = 0.25
 		}			
 	}
 
@@ -139,45 +138,16 @@ ai_strategy_territorial_expansion = {
 	
 	secret_goal_weights = {
 		protect = 0.5
-		conquer = 3.0
-		dominate = 2.0
+		conquer = 1.5
 	}
 
 	wargoal_weights = {
-		conquer_state = 5
-		return_state = 3
-		take_treaty_port = 1.5
-		make_puppet = 2.5
-		make_vassal = 3.5
-		make_dominion = 1.5
+		conquer_state = 1.5
+		return_state = 1.5
 	}	
 		
 	possible = {
 		always = yes
-	}
-	
-	colonial_interest_ratio = {
-		value = 0.5
-	
-		if = {
-			limit = { navy_size >= 30 }
-			add = 0.15
-		}
-		
-		if = {
-			limit = { navy_size >= 60 }
-			add = 0.15
-		}		
-		
-		if = {
-			limit = { navy_size >= 90 }
-			add = 0.15
-		}	
-		
-		if = {
-			limit = { navy_size >= 120 }
-			add = 0.5
-		}			
 	}
 
 	weight = {
@@ -200,11 +170,11 @@ ai_strategy_colonial_expansion = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = 100000 # 1 barrack per 200k incorporated population
-	wanted_navy_ratio = 100000 # 1 naval base per 200k coastal incorporated population
+	wanted_army_ratio = 200000 # 1 barrack per 200k incorporated population
+	wanted_navy_ratio = 200000 # 1 naval base per 200k coastal incorporated population
 	
-	undesirable_infamy_level = 75
-	unacceptable_infamy_level = 100	
+	undesirable_infamy_level = 25
+	unacceptable_infamy_level = 50	
 	
 	ideological_opinion_effect_mult = 1.0
 	
@@ -260,26 +230,26 @@ ai_strategy_colonial_expansion = {
 	}
 	
 	colonial_interest_ratio = {
-		value = 1
+		value = 0.10
 	
 		if = {
 			limit = { navy_size >= 30 }
-			add = 0.3
+			add = 0.1
 		}
 		
 		if = {
 			limit = { navy_size >= 60 }
-			add = 0.3
+			add = 0.1
 		}		
 		
 		if = {
 			limit = { navy_size >= 90 }
-			add = 0.3
+			add = 0.1
 		}	
 		
 		if = {
 			limit = { navy_size >= 120 }
-			add = 1.1
+			add = 0.1
 		}			
 	}
 	
@@ -318,9 +288,8 @@ ai_strategy_colonial_expansion = {
 
 	wargoal_weights = {
 		conquer_state = 1.5
-		make_dominion = 2
-		take_treaty_port = 5
-		annex_native = 2.5
+		make_dominion = 1.5
+		take_treaty_port = 1.5
 	}	
 		
 	possible = {
@@ -367,11 +336,11 @@ ai_strategy_armed_isolationism = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = 125000 # 1 barrack per 150k incorporated population
+	wanted_army_ratio = 150000 # 1 barrack per 150k incorporated population
 	wanted_navy_ratio = 500000 # 1 naval base per 500k coastal incorporated population
 	
-	undesirable_infamy_level = 25
-	unacceptable_infamy_level = 100	
+	undesirable_infamy_level = 1
+	unacceptable_infamy_level = 25	
 	
 	ideological_opinion_effect_mult = 0.75
 	
@@ -451,8 +420,8 @@ ai_strategy_economic_imperialism = {
 	wanted_army_ratio = 200000 # 1 barrack per 200k incorporated population
 	wanted_navy_ratio = 200000 # 1 naval base per 200k coastal incorporated population
 	
-	undesirable_infamy_level = 50
-	unacceptable_infamy_level = 100	
+	undesirable_infamy_level = 25
+	unacceptable_infamy_level = 50	
 	
 	ideological_opinion_effect_mult = 1.0
 	
@@ -477,17 +446,17 @@ ai_strategy_economic_imperialism = {
 	
 	# Added to value from default strategy
 	aggression = {
-		value = 1
+		value = 0.5
 		if = {
 			limit = { 
 				NOT = { is_country_type = unrecognized }
 				scope:target_country = { is_country_type = unrecognized } 
 			}
-			add = 20
+			add = 1.5
 			
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
-				add = 20
+				add = 2.5
 			}			
 		}
 		
@@ -510,7 +479,7 @@ ai_strategy_economic_imperialism = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
+			multiply = 0.25
 		}		
 	}
 	
@@ -519,26 +488,26 @@ ai_strategy_economic_imperialism = {
 	}
 	
 	colonial_interest_ratio = {
-		value = 0.5
+		value = 0.10
 	
 		if = {
 			limit = { navy_size >= 30 }
-			add = 0.1
+			add = 0.05
 		}
 		
 		if = {
 			limit = { navy_size >= 60 }
-			add = 0.1
+			add = 0.05
 		}		
 		
 		if = {
 			limit = { navy_size >= 90 }
-			add = 0.1
+			add = 0.05
 		}	
 		
 		if = {
 			limit = { navy_size >= 120 }
-			add = 0.5
+			add = 0.05
 		}			
 	}
 	
@@ -596,10 +565,10 @@ ai_strategy_economic_imperialism = {
 	}
 
 	wargoal_weights = {
-		take_treaty_port = 5
-		make_puppet = 2
-		make_dominion = 2	
-		make_vassal = 2
+		take_treaty_port = 1.5
+		make_puppet = 1.5
+		make_dominion = 1.5	
+		make_vassal = 1.5	
 	}	
 	
 	wargoal_scores = {	
@@ -662,10 +631,10 @@ ai_strategy_unify_germany = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = 125000 # 1 barrack per 150k incorporated population
+	wanted_army_ratio = 150000 # 1 barrack per 150k incorporated population
 	wanted_navy_ratio = 400000 # 1 naval base per 400k coastal incorporated population
 	
-	undesirable_infamy_level = 75
+	undesirable_infamy_level = 50
 	unacceptable_infamy_level = 100
 	
 	ideological_opinion_effect_mult = 0.5
@@ -696,7 +665,7 @@ ai_strategy_unify_germany = {
 
 	# Added to value from default strategy
 	bravery = {
-		value = 1
+		value = 0.5
 	}
 	
 	# Added to value from default strategy
